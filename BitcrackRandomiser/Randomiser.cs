@@ -175,7 +175,7 @@ namespace BitcrackRandomiser
                     {
                         case AppType.vanitysearch:
                             string settedGpus = settings.GPUIndex > 0 ? $"-gpuId {settings.GPUIndex}" : $"-gpuId {string.Join(",", Enumerable.Range(0, settings.GPUCount).ToArray())}";
-                            appArguments = $"{settings.AppArgs} -t 0 -gpu {settedGpus} -i vanitysearch.txt --keyspace {startHex}{totalZeros}:+1{totalZeros}";
+                            appArguments = $"{settings.AppArgs} -gpu {settedGpus} -i vanitysearch.txt --keyspace {startHex}{totalZeros}:+1{totalZeros}";
                             break;
                         case AppType.cpu:
                             appArguments = $"{settings.AppArgs} -i vanitysearch.txt --keyspace {startHex}{totalZeros}:+1{totalZeros}";
