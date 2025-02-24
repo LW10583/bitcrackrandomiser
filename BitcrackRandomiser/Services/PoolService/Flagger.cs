@@ -39,13 +39,13 @@ namespace BitcrackRandomiser.Services.PoolService
             bool flagUsed = MainService.FlagHex(settings!.UserToken!, hex, walletAddress, hashedProofKey, proofKey, gpuName, gpuCount, settings.ForceContinue, settings!.TargetPuzzle!).Result;
 
             // Try flagging
-            const int maxTries = 6;
+            const int maxTries = 3;
             int flagTries = 1;
             while (!flagUsed && flagTries <= maxTries)
             {
                 flagUsed = MainService.FlagHex(settings!.UserToken!, hex, settings.WorkerName, hashedProofKey, proofKey, gpuName, gpuCount, settings.ForceContinue, settings!.TargetPuzzle!).Result;
                 Helper.WriteLine($"Flag error... Retrying... {flagTries}/{maxTries} [GPU{gpuIndex}]", MessageType.externalApp, gpuIndex: gpuIndex);
-                Thread.Sleep(10000);
+                Thread.Sleep(2000);
                 flagTries++;
             }
 
